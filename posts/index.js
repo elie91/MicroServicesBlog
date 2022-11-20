@@ -33,10 +33,6 @@ app.post('/posts', async (req, res) => {
 });
 
 app.post('/events', (req, res) => {
-  const event = req.body;
-  if (event.type === 'PostCreated') {
-    console.log(event);
-  }
   res.send({});
 });
 
