@@ -26,4 +26,4 @@ app.post('/events', async (req, res) => {
 
 app.listen(4003, () => {
   console.log('Listening on 4003');
-})
+});
