@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import axios from "axios";
 
-const CommentCreate = ({ onCreateComment }) => {
+const CommentCreate = ({ postId }) => {
   const [content, setContent] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    await onCreateComment({ content })
+
+    await axios.post(`http://posts.com/posts/${postId}/comments`, {
+      content,
+    });
+
     setContent("");
   };
 
@@ -25,5 +30,4 @@ const CommentCreate = ({ onCreateComment }) => {
     </div>
   );
 };
-
 export default CommentCreate;

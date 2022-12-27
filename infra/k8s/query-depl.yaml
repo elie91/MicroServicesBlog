@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: query-deployment
+  name: query-depl
 spec:
   replicas: 1
   selector:
@@ -13,21 +13,18 @@ spec:
         app: query
     spec:
       containers:
-      - name: query
-        image: elie91/microservices-blog-query:latest
-
---- 
-
+        - name: query
+          image: cygnetops/query-84
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: query-cluster-ip
+  name: query-srv
 spec:
   selector:
     app: query
-  type: ClusterIP
   ports:
-  - port: 4002
-    targetPort: 4002
-    name: query
-    protocol: TCP
+    - name: query
+      protocol: TCP
+      port: 4002
+      targetPort: 4002
